@@ -1,0 +1,12 @@
+INSERT INTO color (catala, castella, frances, angles) VALUES ('vermell', 'rojo', 'rouge', 'red');
+INSERT INTO color (catala, castella, frances, angles) VALUES ('verd', 'verde', 'vert', 'green');
+INSERT INTO color (catala, castella, frances, angles) VALUES ('blanc', 'blanco', 'blanc', 'white');
+INSERT INTO color (catala, castella, frances, angles) VALUES ('groc', 'amarillo', 'jaune', 'yellow');
+INSERT INTO color (catala, castella, frances, angles) VALUES ('negre', 'negro', 'noir', 'black');
+INSERT INTO color (catala, castella, frances, angles) VALUES ('lila', 'morado', 'violet', 'purple');
+INSERT INTO color (catala, castella, frances, angles) VALUES ('taronja', 'naranja', 'orange', 'orange');
+INSERT INTO color (catala, castella, frances, angles) VALUES ('blau', 'azul', 'bleu', 'blue');
+INSERT INTO color (catala, castella, frances, angles) VALUES ('rosa', 'rosa', 'rose', 'pink');
+INSERT INTO color (catala, castella, frances, angles) VALUES ('gris', 'gris', 'gris', 'grey');
+INSERT INTO color (catala, castella, frances, angles) VALUES ('fucsia', 'fucsia', 'fuchsia', 'fuchsia' );
+INSERT INTO color (catala, castella, frances, angles) VALUES ('marró', 'marrón', 'marron', 'brown');

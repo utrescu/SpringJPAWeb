@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>A colorejar!</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet"
+      th:href="@{/css/colors.css}"
+      href="../../css/colors.css"/>	
+</head>
+<body>		
+<div id="main">
+	    <h1>Colors</h1>
+	    
+	    <div th:each="color : ${colors}">
+	     <p>
+	        <a href="colors" th:href="@{color/__${color.catala}__}">
+	           <span class="valor" th:text="${color.catala}">Llista de colors...</span>
+	        </a>
+	     </p>	     
+	    </div>
+	    <p></p>
+	    <p><a href="/crear" th:href="@{/crear}">Crear un nou color</a></p>
+</div>
+</body>
+</html>

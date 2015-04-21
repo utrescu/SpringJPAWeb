@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+
+div#main {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: lightgrey;
+  color: black;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+div#requadre {
+  width: 48%;
+  height: 200px;
+  float: right;
+  background-color: red;
+}
+
+div#text {
+  width: 50%;
+  display:block;
+}
+
+h1 {
+  width: 100%;
+  background-color: blue;
+}
+
+p {
+
+  margin-left: 30px;
+}
+
+span.valor {
+  font-size: 20px;
+  color: #4d4d4d;
+  font-weight: bold;
+}
