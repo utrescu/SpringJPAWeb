@@ -17,16 +17,20 @@ public class Color {
   @Column(name = "id", updatable = false, nullable = false)
   private Long id;
   
-  @NotNull @NotEmpty
+  @NotNull 
+  @NotEmpty
   protected String catala;
   
-  @NotNull @NotEmpty
+  @NotNull 
+  @NotEmpty(message="{error.blanc}")
   protected String castella;
   
-  @NotNull @NotEmpty
+  @NotNull 
+  @NotEmpty(message="{error.blanc}")
   protected String frances;
   
-  @NotNull @NotEmpty
+  @NotNull 
+  @NotEmpty(message="{error.blanc}")
   protected String angles;
   
   public Color() {

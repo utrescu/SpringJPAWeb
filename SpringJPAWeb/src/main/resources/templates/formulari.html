@@ -25,24 +25,27 @@
 <div id="main">
 	
 	<div id="form">
-	<h1>Color</h1>
+	<h1 th:text="#{color.app}">Color</h1>
 	<div  th:if="${missatgeError != null}">
-	<p><span class="error" th:text="${missatgeError}">Error!</span></p>
+	<p><span class="error" th:text="#{color.duplicat}">Error!</span></p>
 	</div>	
 	<form action="#" th:action="@{/crear}" th:object="${color}" method="post">
-    <p>Catala: <input type="text" th:field="*{catala}" />
+    <p><label th:text="#{color.catala}">Català</label><input type="text" th:field="*{catala}" />
         <span class="error" th:if="${#fields.hasErrors('catala')}" th:errors="*{catala}">Name Error</span>
     </p>
-    <p>Francès: <input type="text" th:field="*{frances}" />
+    <p><label th:text="#{color.frances}">Francès</label><input type="text" th:field="*{frances}" />
     	<span class="error" th:if="${#fields.hasErrors('frances')}" th:errors="*{frances}">Name Error</span>
     </p>
-    <p>Castellà: <input type="text" th:field="*{castella}" />
+    <p><label th:text="#{color.castella}">Castellà</label><input type="text" th:field="*{castella}" />
     	<span class="error" th:if="${#fields.hasErrors('castella')}" th:errors="*{castella}">Name Error</span>
     </p>
-    <p>Anglès: <input type="text" th:field="*{angles}" />
+    <p><label th:text="#{color.angles}">Anglès</label><input type="text" th:field="*{angles}" />
     	<span class="error" th:if="${#fields.hasErrors('angles')}" th:errors="*{angles}">Name Error</span>
     </p>
-    <p><input type="submit" value=" Enviar " /> <input type="reset" value="Cancel·lar" /></p>
+    <p>
+       <input type="submit" value=" Enviar " th:value="#{colors.acceptar}"/> 
+       <input type="reset" value="Cancel·lar" th:value="#{colors.cancelar}"/>
+    </p>
     </form>
     </div>
 </div>

@@ -9,17 +9,17 @@
 </head>
 <body>		
 <div id="main">
-	    <h1>Colors</h1>
+	    <h1 th:text="#{color.app}">Colors</h1>
 	    
 	    <div th:each="color : ${colors}">
 	     <p>
 	        <a href="colors" th:href="@{color/__${color.catala}__}">
-	           <span class="valor" th:text="${color.catala}">Llista de colors...</span>
+	           <span class="valor" th:text="${color.catala}">Colors,colores,coleur</span>
 	        </a>
 	     </p>	     
 	    </div>
 	    <p></p>
-	    <p><a href="/crear" th:href="@{/crear}">Crear un nou color</a></p>
+	    <p><a href="/crear" th:href="@{/crear}" th:text="#{colors.alta}">Alta de colors</a></p>
 </div>
 </body>
 </html>

@@ -25,14 +25,14 @@
 <div id="main">
 	<div id="requadre"></div>
 	<div id="text">
-	<h1>Color</h1>	
-    <p>Catala: <span class="valor" th:text="${color} ? ${color.catala}">color</span></p>
-    <p>Francès: <span class="valor" th:text="${color} ? ${color.frances}">coleur</span></p>
-    <p>Castellà: <span class="valor" th:text="${color} ? ${color.castella}">color</span></p>
-    <p>Anglès: <span class="valor" th:text="${color} ? ${color.angles}">color</span></p>
+	<h1 th:text="#{color.app}">Color</h1>	
+    <p><span th:text="#{color.catala}">Catala:</span><span class="valor" th:text="${color} ? ${color.catala}">color</span></p>
+    <p><span th:text="#{color.frances}">Francès:</span><span class="valor" th:text="${color} ? ${color.frances}">coleur</span></p>
+    <p><span th:text="#{color.castella}">Castellà:</span><span class="valor" th:text="${color} ? ${color.castella}">color</span></p>
+    <p><span th:text="#{color.angles}">Anglès:</span><span class="valor" th:text="${color} ? ${color.angles}">color</span></p>
     </div>
     
-    <p><a href="color" th:href="@{/colors}">Llista de colors</a></p>
+    <p><a href="color" th:href="@{/colors}" th:text="#{colors.llista}">Llista de colors</a></p>
 </div>
 </body>
 </html>

@@ -97,14 +97,14 @@ public class ColorsController {
     
     color.toLower();
     // El formulari valida
-    if (resultat.hasErrors()) {
-      model.addAttribute("missatgeError", "Falten colors");
+    if (resultat.hasErrors()) {      
       return "formulari";
     }
   
     // Comprova si ja hi era
     if (colorsRepository.findByCatala(color.getCatala()) != null) {
-       model.addAttribute("missatgeError", "Color ja existent");
+      
+       model.addAttribute("missatgeError", true);
        return "formulari";
     }
     
