@@ -94,6 +94,8 @@ public class ColorsController {
    */
   @RequestMapping(value="/crear", method=RequestMethod.POST)
   public String creaColor(@Valid Color color, BindingResult resultat, Model model) {
+    
+    color.toLower();
     // El formulari valida
     if (resultat.hasErrors()) {
       model.addAttribute("missatgeError", "Falten colors");

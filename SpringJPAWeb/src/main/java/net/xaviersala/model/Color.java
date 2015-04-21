@@ -99,6 +99,16 @@ public class Color {
     this.angles = angles;
   }
   
+  /**
+   * Converteix a minúscules
+   */
+  public void toLower() {
+    catala = catala.toLowerCase();
+    castella = castella.toLowerCase();
+    frances = frances.toLowerCase();
+    angles = angles.toLowerCase();
+  }
+  
   public String toString() {
     return catala + " " + castella + " " + frances + " " + angles;
   }
