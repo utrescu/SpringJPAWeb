@@ -4,18 +4,21 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import net.xaviersala.exceptions.ColorNotFoundException;
 import net.xaviersala.model.Color;
 import net.xaviersala.repositories.ColorsRepository;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
 public class ColorsController {
@@ -72,7 +75,7 @@ public class ColorsController {
     log.info("Cercant el color " + nom );
     Color color = colorsRepository.findByCatala(nom);
     
-    if (color == null) return "llista";
+    if (color == null) throw new ColorNotFoundException(nom);;
     
     model.addAttribute("color", color);
     return "mostra";

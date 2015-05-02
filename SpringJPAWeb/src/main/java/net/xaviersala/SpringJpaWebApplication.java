@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author xavier
  *
  */
-@SpringBootApplication
+@SpringBootApplication 
 public class SpringJpaWebApplication {
 
     public static void main(String[] args) {
