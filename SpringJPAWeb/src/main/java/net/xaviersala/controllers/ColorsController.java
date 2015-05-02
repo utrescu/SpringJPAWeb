@@ -5,20 +5,19 @@ import java.util.List;
 import javax.validation.Valid;
 
 import net.xaviersala.exceptions.ColorNotFoundException;
+import net.xaviersala.exceptions.RepeatedColorException;
 import net.xaviersala.model.Color;
 import net.xaviersala.repositories.ColorsRepository;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
 public class ColorsController {
@@ -107,8 +106,9 @@ public class ColorsController {
     // Comprova si ja hi era
     if (colorsRepository.findByCatala(color.getCatala()) != null) {
       
-       model.addAttribute("missatgeError", true);
-       return "formulari";
+       // model.addAttribute("missatgeError", true);
+       // return "formulari";
+        throw new RepeatedColorException(color.getCatala());
     }
     
     colorsRepository.save(color);
