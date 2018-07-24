@@ -30,17 +30,25 @@ import org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHan
  * @author xavier
  *
  */
+@SuppressWarnings("unused")
 public class ColorsControllerTest {
    
   ColorsController controller;
   ColorsRepository repository;
-  Color blau;
+  List<Color> llistaColors;
   Color noExisteix;
+  Color blau;
   
   @Before
   public void setUp() {
     
     blau = new Color("blau", "azul", "bleu", "blue");
+    
+    llistaColors = new ArrayList<Color>(); 
+    llistaColors.add(new Color("vermell", "rojo", "rouge", "red"));
+    llistaColors.add(new Color("groc", "amarillo", "jaune", "yellow"));
+    llistaColors.add(new Color("verd", "verde", "vert", "green"));
+    
     noExisteix = new Color("beix", "beis", "beige", "beige");
     repository = mock(ColorsRepository.class);     
     controller = new ColorsController(repository);
@@ -136,28 +144,44 @@ public class ColorsControllerTest {
   @Test
   public void testRetornaLaLlistaCorrecta() throws Exception {
     
-    List<Color> llistaColors = new ArrayList<Color>(); 
-    ompleColors(llistaColors);
-    
+        
     when(repository.findAll()).thenReturn(llistaColors);
     
     MockMvc mock = standaloneSetup(controller).build();
     mock.perform(get("/colors"))
         .andExpect(view().name("llista"))
         .andExpect(model().attributeExists("colors"))
-        .andExpect(model().attribute("colors", hasItems(llistaColors.toArray())));
+        .andExpect(model().attribute("colors", hasItems(llistaColors.toArray())))
+        .andExpect(model().attribute("colors", hasSize(llistaColors.size())))
+        .andExpect(model().attribute("colors", hasItem(
+                                     allOf( 
+                                         hasProperty("catala", is(llistaColors.get(0).getCatala())),
+                                         hasProperty("castella",is(llistaColors.get(0).getCastella())),
+                                         hasProperty("frances",is(llistaColors.get(0).getFrances())),
+                                         hasProperty("angles", is(llistaColors.get(0).getAngles()))
+                                         )
+            )))
+        .andExpect(model().attribute("colors", hasItem(
+                                     allOf( 
+                                         hasProperty("catala", is(llistaColors.get(1).getCatala())),
+                                         hasProperty("castella",is(llistaColors.get(1).getCastella())),
+                                         hasProperty("frances",is(llistaColors.get(1).getFrances())),
+                                         hasProperty("angles", is(llistaColors.get(1).getAngles()))
+                                         )
+            )))
+        .andExpect(model().attribute("colors", hasItem(
+                                     allOf( 
+                                         hasProperty("catala", is(llistaColors.get(2).getCatala())),
+                                         hasProperty("castella",is(llistaColors.get(2).getCastella())),
+                                         hasProperty("frances",is(llistaColors.get(2).getFrances())),
+                                         hasProperty("angles", is(llistaColors.get(2).getAngles()))
+                                         )
+            )));
+    
+    // Només s'ha de cridar la funció findAll() un cop...
+    verify(repository, times(1)).findAll();
   }
 
-  /**
-   * Genera una llista de colors.
-   * 
-   * @param llistaColors
-   */
-  private void ompleColors(List<Color> llistaColors) {
-    llistaColors.add(new Color("vermell", "rojo", "rouge", "red"));
-    llistaColors.add(new Color("verd", "verde", "vert", "green"));   
-  }
-  
   /**
    * Comprova que es mostra el formulari per donar
    * d'alta un color.
@@ -186,10 +210,7 @@ public class ColorsControllerTest {
                       
            .andExpect(status().is3xxRedirection())
            .andExpect(redirectedUrl("/color/" + blau.getCatala()));
-        
-//    verify(repository, atLeastOnce()).save(
-//        new Color(blau.getCatala(), blau.getCastella(),
-//                  blau.getFrances(), blau.getAngles()));
+            
   }
   
   /**

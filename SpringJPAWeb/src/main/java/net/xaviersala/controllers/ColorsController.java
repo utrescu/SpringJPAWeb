@@ -57,8 +57,9 @@ public class ColorsController {
    */
   @RequestMapping(value = "/colors")
   public String generaColors(Model model) {
-    log.info("Algú demana colors" + colorsRepository.findAll() + " <-");
+    
     List<Color> colors = (List<Color>) colorsRepository.findAll();
+    log.info("Algú demana tots els colors" + colors);
     model.addAttribute("colors", colors);
     return "llista";
   }
